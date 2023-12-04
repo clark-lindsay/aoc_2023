@@ -37,10 +37,7 @@ defmodule Advent.Day02 do
   def part_2(input_content) do
     input_content
     |> Enum.map(&String.split(&1, ~r/;|:/))
-    |> Enum.reduce(0, fn [game_header | game_line], acc ->
-      ["Game", game_number] = String.split(game_header) 
-      {game_id, ""} = Integer.parse(game_number)
-
+    |> Enum.reduce(0, fn game_line, acc ->
       minimums =
         Enum.reduce(game_line, %{min_red: 0, min_green: 0, min_blue: 0}, fn round, mins ->
           captures =

@@ -42,16 +42,26 @@ defmodule AdventDay01Test do
     test "another example" do
       assert 585 ==
                Day01.part_2([
-                 "xmkhttr64htgvhjfivefcjlzjqrsjlfivekbcnhqpzg", # {6, 5}
-                 "261flvsthree", # {2, 3}
-                 "one2mgnphzcx45rmnffneight", # {1, 8}
-                 "sevenfivesixzvpone8f1plj", # {7, 1}
-                 "ccthpbg6six3", # {6, 3}
-                 "f1hzds5kfdsj", # {1, 5}
-                 "qkneightwofourninejzjfmkjv8eightthdtp", # {8, 8}
-                 "eight62rvkjphrdtwoseventwo28", # {8, 8}
-                 "eight33", # {8, 3}
-                 "sevenkzvnkj5ftone" # {7, 1}
+                 # {6, 5}
+                 "xmkhttr64htgvhjfivefcjlzjqrsjlfivekbcnhqpzg",
+                 # {2, 3}
+                 "261flvsthree",
+                 # {1, 8}
+                 "one2mgnphzcx45rmnffneight",
+                 # {7, 1}
+                 "sevenfivesixzvpone8f1plj",
+                 # {6, 3}
+                 "ccthpbg6six3",
+                 # {1, 5}
+                 "f1hzds5kfdsj",
+                 # {8, 8}
+                 "qkneightwofourninejzjfmkjv8eightthdtp",
+                 # {8, 8}
+                 "eight62rvkjphrdtwoseventwo28",
+                 # {8, 3}
+                 "eight33",
+                 # {7, 1}
+                 "sevenkzvnkj5ftone"
                ])
     end
 
@@ -63,7 +73,6 @@ defmodule AdventDay01Test do
         |> String.split()
 
       assert 53_539 == Day01.part_2(input_from_file)
-      
     end
   end
 end

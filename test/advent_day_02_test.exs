@@ -23,7 +23,7 @@ defmodule AdventDay02Test do
         |> File.read!()
         |> String.split(~r/\n/)
 
-      assert 10 == Day02.part_1(input_from_file)
+      assert 2_727 == Day02.part_1(input_from_file)
     end
   end
 
@@ -37,7 +37,7 @@ defmodule AdventDay02Test do
         "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
       ]
 
-      assert 2286 = Day02.part_2(input)
+      assert 2_286 = Day02.part_2(input)
     end
 
     test "input file" do
@@ -47,7 +47,7 @@ defmodule AdventDay02Test do
         |> File.read!()
         |> String.split(~r/\n/)
 
-      assert 56580 == Day02.part_2(input_from_file)
+      assert 56_580 == Day02.part_2(input_from_file)
     end
   end
 end
