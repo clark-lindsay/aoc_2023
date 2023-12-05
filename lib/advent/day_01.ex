@@ -50,7 +50,9 @@ defmodule Advent.Day01 do
         end
 
       {last_spelled_number_value, final_spelled_index} =
-        case Regex.run(~r/#{name_to_val |> Map.keys() |> Enum.map_join("|", &String.reverse/1)}/, String.reverse(line),
+        case Regex.run(
+               ~r/#{name_to_val |> Map.keys() |> Enum.map_join("|", &String.reverse/1)}/,
+               String.reverse(line),
                return: :index
              ) do
           [{starting_index, length} | _rest] ->
@@ -70,31 +72,32 @@ defmodule Advent.Day01 do
         line
         |> String.graphemes()
         |> Enum.with_index()
-        |> Enum.reduce({{first_spelled_number_value, last_spelled_number_value}, false}, fn {grapheme, index},
-                                                                                            {calibration_value,
-                                                                                             replaced_first?} ->
-          with {value, ""} <- Integer.parse(grapheme) do
-            case calibration_value do
-              {nil, nil} ->
-                {{value, value}, true}
+        |> Enum.reduce(
+          {{first_spelled_number_value, last_spelled_number_value}, false},
+          fn {grapheme, index}, {calibration_value, replaced_first?} ->
+            with {value, ""} <- Integer.parse(grapheme) do
+              case calibration_value do
+                {nil, nil} ->
+                  {{value, value}, true}
 
-              {first_int, second_int} ->
-                cond do
-                  index < first_spelled_index and not replaced_first? ->
-                    {{value, second_int}, true}
+                {first_int, second_int} ->
+                  cond do
+                    index < first_spelled_index and not replaced_first? ->
+                      {{value, second_int}, true}
 
-                  index > final_spelled_index ->
-                    {{first_int, value}, replaced_first?}
+                    index > final_spelled_index ->
+                      {{first_int, value}, replaced_first?}
 
-                  true ->
-                    {calibration_value, replaced_first?}
-                end
+                    true ->
+                      {calibration_value, replaced_first?}
+                  end
+              end
+            else
+              _ ->
+                {calibration_value, replaced_first?}
             end
-          else
-            _ ->
-              {calibration_value, replaced_first?}
           end
-        end)
+        )
 
       acc + calibration_tens * 10 + calibration_ones
     end)

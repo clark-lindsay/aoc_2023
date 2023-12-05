@@ -4,7 +4,8 @@ defmodule Advent.Day03 do
     {number_positions, symbol_positions} =
       input_content
       |> Enum.with_index()
-      |> Enum.reduce({%{}, MapSet.new()}, fn {line, line_index}, {number_positions, symbol_positions} ->
+      |> Enum.reduce({%{}, MapSet.new()}, fn {line, line_index},
+                                             {number_positions, symbol_positions} ->
         # [{number, {starting_index, length}}, ...]
         numbers =
           ~r/\d+/
@@ -34,7 +35,9 @@ defmodule Advent.Day03 do
 
     Enum.reduce(symbol_positions, 0, fn {row, column}, acc ->
       adjacent_numbers =
-        for x <- Range.new(row - 1, row + 1), y <- Range.new(column - 1, column + 1), reduce: MapSet.new() do
+        for x <- Range.new(row - 1, row + 1),
+            y <- Range.new(column - 1, column + 1),
+            reduce: MapSet.new() do
           set ->
             adjacent_number = Map.get(number_positions, {x, y})
             if adjacent_number, do: MapSet.put(set, adjacent_number), else: set
@@ -48,7 +51,8 @@ defmodule Advent.Day03 do
     {number_positions, gear_positions} =
       input_content
       |> Enum.with_index()
-      |> Enum.reduce({%{}, MapSet.new()}, fn {line, line_index}, {number_positions, gear_positions} ->
+      |> Enum.reduce({%{}, MapSet.new()}, fn {line, line_index},
+                                             {number_positions, gear_positions} ->
         # [{number, {starting_index, length}}, ...]
         numbers =
           ~r/\d+/
@@ -78,7 +82,9 @@ defmodule Advent.Day03 do
 
     Enum.reduce(gear_positions, 0, fn {row, column}, acc ->
       adjacent_numbers =
-        for x <- Range.new(row - 1, row + 1), y <- Range.new(column - 1, column + 1), reduce: MapSet.new() do
+        for x <- Range.new(row - 1, row + 1),
+            y <- Range.new(column - 1, column + 1),
+            reduce: MapSet.new() do
           set ->
             adjacent_number = Map.get(number_positions, {x, y})
             if adjacent_number, do: MapSet.put(set, adjacent_number), else: set

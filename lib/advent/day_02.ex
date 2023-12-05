@@ -8,7 +8,7 @@ defmodule Advent.Day02 do
     input_content
     |> Enum.map(&String.split(&1, ~r/;|:/))
     |> Enum.reduce(0, fn [game_header | game_line], acc ->
-      ["Game", game_number] = String.split(game_header) 
+      ["Game", game_number] = String.split(game_header)
       {game_id, ""} = Integer.parse(game_number)
 
       valid_game? =
