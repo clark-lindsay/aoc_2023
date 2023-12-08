@@ -32,7 +32,7 @@ defmodule Advent.Day04 do
   end
 
   def part_2(input_content) do
-    {total_card_count, extra_copies_per_card} =
+    {total_card_count, _extra_copies_per_card} =
       input_content
       |> Enum.with_index()
       |> Enum.reduce({0, %{}}, fn {line, index}, {total_card_count, card_copy_counts} ->
