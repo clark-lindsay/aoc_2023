@@ -106,7 +106,8 @@ defmodule Advent.Day07 do
 
     {card_values, _} =
       Enum.reduce(hand_graphemes, {0, 0}, fn card, {total, card_position} ->
-        {total + card_rank(card, rule_set) * position_multipliers[card_position], card_position + 1}
+        {total + card_rank(card, rule_set) * position_multipliers[card_position],
+         card_position + 1}
       end)
 
     hand_type_value + card_values

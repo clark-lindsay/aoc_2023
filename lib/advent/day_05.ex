@@ -17,9 +17,11 @@ defmodule Advent.Day05 do
         # list ex. `["50 98 2", "52 50 48"]`
         mapping =
           Enum.map(range_list, fn range ->
-            [dest_start, source_start, length] = range |> String.split() |> Enum.map(&String.to_integer/1)
+            [dest_start, source_start, length] =
+              range |> String.split() |> Enum.map(&String.to_integer/1)
 
-            {Range.new(source_start, source_start + length - 1), Range.new(dest_start, dest_start + length - 1)}
+            {Range.new(source_start, source_start + length - 1),
+             Range.new(dest_start, dest_start + length - 1)}
           end)
 
         [mapping | acc]
@@ -36,7 +38,8 @@ defmodule Advent.Day05 do
           if default_value in source_range do
             # the mapped value has the same offset from the start of the dest range as from the start
             # of the source range
-            mapped_val = Enum.at(destination_range, 0) + (default_value - Enum.at(source_range, 0))
+            mapped_val =
+              Enum.at(destination_range, 0) + (default_value - Enum.at(source_range, 0))
 
             {:halt, mapped_val}
           else
@@ -70,9 +73,11 @@ defmodule Advent.Day05 do
         # list ex. `["50 98 2", "52 50 48"]`
         mapping =
           Enum.map(range_list, fn range ->
-            [dest_start, source_start, length] = range |> String.split() |> Enum.map(&String.to_integer/1)
+            [dest_start, source_start, length] =
+              range |> String.split() |> Enum.map(&String.to_integer/1)
 
-            {Range.new(source_start, source_start + length - 1), Range.new(dest_start, dest_start + length - 1)}
+            {Range.new(source_start, source_start + length - 1),
+             Range.new(dest_start, dest_start + length - 1)}
           end)
 
         [mapping | acc]
@@ -89,7 +94,8 @@ defmodule Advent.Day05 do
           if default_value in source_range do
             # the mapped value has the same offset from the start of the dest range as from the start
             # of the source range
-            mapped_val = Enum.at(destination_range, 0) + (default_value - Enum.at(source_range, 0))
+            mapped_val =
+              Enum.at(destination_range, 0) + (default_value - Enum.at(source_range, 0))
 
             {:halt, mapped_val}
           else

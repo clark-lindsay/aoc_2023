@@ -65,9 +65,18 @@ defmodule Advent.Day04 do
 
         card_copy_counts =
           if winner_count > 0 do
-            Enum.reduce(Range.new(index + 1, index + winner_count), card_copy_counts, fn card_index, acc ->
-              Map.update(acc, card_index, copies_of_current_card, &(&1 + copies_of_current_card))
-            end)
+            Enum.reduce(
+              Range.new(index + 1, index + winner_count),
+              card_copy_counts,
+              fn card_index, acc ->
+                Map.update(
+                  acc,
+                  card_index,
+                  copies_of_current_card,
+                  &(&1 + copies_of_current_card)
+                )
+              end
+            )
           else
             card_copy_counts
           end
