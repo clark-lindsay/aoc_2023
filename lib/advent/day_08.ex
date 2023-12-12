@@ -8,7 +8,10 @@ defmodule Advent.Day08 do
     nodes =
       for line <- nodes, into: %{} do
         %{"location" => location, "left" => left, "right" => right} =
-          Regex.named_captures(~r/(?<location>\w{3})\s+=\s+\((?<left>\w{3}),\s+(?<right>\w{3})\)/, line)
+          Regex.named_captures(
+            ~r/(?<location>\w{3})\s+=\s+\((?<left>\w{3}),\s+(?<right>\w{3})\)/,
+            line
+          )
 
         {location, {left, right}}
       end
@@ -43,7 +46,10 @@ defmodule Advent.Day08 do
     nodes =
       for line <- nodes, into: %{} do
         %{"location" => location, "left" => left, "right" => right} =
-          Regex.named_captures(~r/(?<location>\w{3})\s+=\s+\((?<left>\w{3}),\s+(?<right>\w{3})\)/, line)
+          Regex.named_captures(
+            ~r/(?<location>\w{3})\s+=\s+\((?<left>\w{3}),\s+(?<right>\w{3})\)/,
+            line
+          )
 
         {location, {left, right}}
       end
@@ -69,7 +75,8 @@ defmodule Advent.Day08 do
             {:halt, step_counts}
           else
             open_paths =
-              for {origin_node, {current_position, steps_taken}} <- open_paths, into: open_paths do
+              for {origin_node, {current_position, steps_taken}} <- open_paths,
+                  into: open_paths do
                 {left, right} = Map.fetch!(nodes, current_position)
                 new_position = if direction == "L", do: left, else: right
 
